@@ -135,6 +135,17 @@ def checkout(skus):
     itemCount, totalPrice = apply_B_deal(itemCount, totalPrice)
     itemCount, totalPrice = apply_F_deal(itemCount, totalPrice)
 
+    DEALS_FOR_BETTER_PRICE = {}
+
+    # Iterate over deals for better price:
+    for deal in DEALS_FOR_BETTER_PRICE:
+        item = deal[0]
+        if item in itemCounts.keys():
+            numberRequired = deal[1]
+            dealPrice = deal[2]
+            itemCount
+
+
     # Iterate over any remaining items in itemCount
     try:
         for item, count in itemCount.items():
@@ -143,4 +154,5 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
