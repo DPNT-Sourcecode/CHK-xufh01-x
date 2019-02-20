@@ -49,6 +49,7 @@ def checkout(skus):
         else:
             itemCount[item] = 1
 
+    print itemCount
     # Total the number of items from the itemCount
     totalPrice = 0
     try:
@@ -58,9 +59,11 @@ def checkout(skus):
                 numberOfOffers = count // itemPrices["requiredForOffer"]
                 totalPrice += numberOfOffers * itemPrices["offerPrice"]
                 count = count % itemPrices["stdPrice"]
+            totalPrice += count * itemPrices["offerPrice"]
     except KeyError:
         return -1
     else:
         return totalPrice
+
 
 
