@@ -3,4 +3,6 @@
 # noinspection PyUnusedLocal
 # friend_name = unicode string
 def hello(friend_name):
-    raise NotImplementedError()
+    friend_name = "World"
+    return "Hello, "+friend_name+""
+
