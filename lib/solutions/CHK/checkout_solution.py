@@ -4,9 +4,9 @@
 # skus = unicode string
 def checkout(skus):
     """
-    This class contains unit tests for the checkout function.
+    This function accepts a string containing items and returns the total value as iteger.
+    The value of each item is listed below:
 
-    The tests below are built based on the following criteria:
         +------+-------+----------------+
         | Item | Price | Special
         offers |
@@ -20,4 +20,13 @@ def checkout(skus):
         Notes:
         - For any illegal input return -1
     """
+
+    STANDARD_ITEM_VALUES = {
+        "A" : {
+            "stdVal" : 50,
+            "dealVal" : 130,
+            "requiredForDeal" : 3,
+            
+        }
+    }
 
