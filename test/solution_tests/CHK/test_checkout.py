@@ -76,7 +76,7 @@ class TestCheckout(unittest.TestCase):
             "Z": 50
         }
         for item, price in STANDARD_PRICES.items():
-            self.assertEquals(checkout(item), price)
+            setattr(self, "test_item_{}".format(item), self.assertEquals(checkout(item), price))
 
     def test_item_4A(self):
         self.assertEqual(checkout("AAAA"), 180)
@@ -118,7 +118,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("Q"*4), 110)
 
     def test_item_4R_with_3Q(self):
-        self.assertEqual(checkout("RRRRQQQ"), 360)
+        self.assertEqual(checkout("RRRRQQQ"), 260)
 
     def test_item_4R_without_Q(self):
         self.assertEqual(checkout("R"*4), 200)
@@ -130,7 +130,10 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("VV"), 90)
 
     def test_item_4V(self):
-        self.assertEqual(checkout("VVV"), 180)
+        self.assertEqual(checkout("VVVV"), 180)
+
+    def test_all_items(self):
+        self.assertEqual(checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 965)
 
     def test_no_items(self):
         self.assertEqual(checkout(""), 0)
@@ -141,3 +144,4 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
