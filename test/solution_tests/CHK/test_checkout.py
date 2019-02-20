@@ -133,8 +133,11 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("VVVV"), 180)
 
     def test_items_STXYZ(self):
-        self.assertEqual(checkout("VVVV"), 180)
-
+        self.assertEqual(checkout("STX"), 45)
+        # Check the deal applies more than once
+        self.assertEqual(checkout("STXYZZ"), 90)
+        # Check price is given by deal
+        self.assertEqual(checkout("STXYZ"), 82)
 
     def test_all_items(self):
         self.assertEqual(checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 965)
@@ -148,4 +151,5 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 
