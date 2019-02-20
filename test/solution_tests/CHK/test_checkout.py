@@ -142,17 +142,22 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("!"), -1)
 
 
-class 
+class TestSTXYZ(unittest.TestCase):
+    """ Test buy any 3 of (S,T,X,Y,Z) for 45 """
+    def test_items_STX(self):
+        self.assertEqual(checkout("STX"), 45)
+
+    def test_items_STXYZZ(self):
+        """ Check the deal applies more than once """
+        self.assertEqual(checkout("STXYZZ"), 90)
 
     def test_items_STXYZ(self):
-        self.assertEqual(checkout("STX"), 45)
-        # Check the deal applies more than once
-        self.assertEqual(checkout("STXYZZ"), 90)
-        # Check price is given by deal
+        """ Check price is given by deal """
         self.assertEqual(checkout("STXYZ"), 82)
 
 if __name__ == "__main__":
     unittest.main()
+
 
 
 
