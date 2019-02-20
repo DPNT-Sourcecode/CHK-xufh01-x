@@ -75,34 +75,31 @@ class TestCheckout(unittest.TestCase):
             "Y": 10,
             "Z": 50
         }
-        for item, price in STANDARD_PRICES
+        for item, price in STANDARD_PRICES.items():
+            self.assertEquals(checkout(item), price)
 
-    def test_item_3A(self):
+    def test_item_4A(self):
         self.assertEqual(checkout("AAAA"), 180)
 
-    def test_item_5A(self):
-        self.assertEqual(checkout("AAAAA"), 200)
+    def test_item_6A(self):
+        self.assertEqual(checkout("AAAAAA"), 250)
 
-    def test_item_B(self):
+    def test_item_3B(self):
         self.assertEqual(checkout("BBB"), 75)
-
-    def test_item_C(self):
-        self.assertEqual(checkout("C"), 20)
-
-    def test_item_D(self):
-        self.assertEqual(checkout("D"), 15)
-
-    def test_item_E(self):
-        self.assertEqual(checkout("E"), 40)
-
-    def test_item_F(self):
-        self.assertEqual(checkout("FFFF"), 30)
 
     def test_item_E_deal_with_B(self):
         self.assertEqual(checkout("EEEBB"), 150)
 
     def test_item_E_deal_without_B(self):
         self.assertEqual(checkout("EE"), 80)
+
+    def test_item_4F(self):
+        self.assertEqual(checkout("FFFF"), 30)
+
+    def test_item_6H(self):
+        self.assertEqual(checkout("H"*6), 30)
+
+
 
     def test_mixed_items(self):
         self.assertEqual(checkout("ABCDE"), 155)
@@ -116,4 +113,5 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 
