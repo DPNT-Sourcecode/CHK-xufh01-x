@@ -21,7 +21,7 @@ def checkout(skus):
         - For any illegal input return -1
     """
 
-    STANDARD_ITEM_VALUES = {
+    ITEM_VALUES = {
         "A" : {
             "stdPrice" : 50,
             "offerPrice" : 130,
@@ -42,11 +42,14 @@ def checkout(skus):
 
     itemCount = {}
 
-
+    # Count the number of occurences all items in skus
     for item in skus:
         if item in itemCount:
             itemCount[item] += 1
         else:
             itemCount[item] = 1
 
-
+    # Total the number of items from the itemCount
+    totalPrice = 0
+    try:
+        for item, count in itemCount.items()
