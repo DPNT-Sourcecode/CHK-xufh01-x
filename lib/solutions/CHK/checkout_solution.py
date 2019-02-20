@@ -55,4 +55,11 @@ def checkout(skus):
         for item, count in itemCount.items():
             itemPrices = ITEM_VALUES[item]
             if "offerPrice" in itemPrices.keys():
-                numberOfOffers = count // itemPrices
+                numberOfOffers = count // itemPrices["requiredForOffer"]
+                totalPrice += numberOfOffers * itemPrices["offerPrice"]
+                count = count % itemPrices["stdPrice"]
+    except KeyError:
+        return -1
+    else:
+        return totalPrice
+
