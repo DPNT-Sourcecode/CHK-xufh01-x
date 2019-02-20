@@ -139,9 +139,10 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout(""), 0)
 
     def test_illegal_item(self):
-        self.assertEqual(checkout("ABCDEZ"), -1)
+        self.assertEqual(checkout("!"), -1)
 
 
 if __name__ == "__main__":
     unittest.main()
+
 
