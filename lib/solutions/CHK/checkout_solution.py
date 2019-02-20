@@ -16,7 +16,7 @@ def apply_A_deals(itemCounts, totalPrice=0):
             totalOfferPrice = itemCounts["A"] // 3 * OFFER_PRICE_FOR_3A
             totalPrice += totalOfferPrice
             itemCounts["A"] = itemCounts["A"] % 3
-    return totalPrice
+    return itemCounts, totalPrice
 
 def apply_B_deal(itemCounts, totalPrice=0):
     """ For offer buy 2B for 45"""
@@ -26,7 +26,7 @@ def apply_B_deal(itemCounts, totalPrice=0):
         totalOfferPrice = itemCounts["B"] // REQUIRED_FOR_OFFER * OFFER_PRICE
         totalPrice += totalOfferPrice
         itemCounts["B"] = itemCounts["B"] % REQUIRED_FOR_OFFER
-    return totalPrice
+    return itemCounts, totalPrice
 
 
 def apply_E_deal(itemCounts, totalPrice=0):
@@ -35,7 +35,7 @@ def apply_E_deal(itemCounts, totalPrice=0):
             and "B" in itemCounts.keys():
         offerCount = itemCounts["E"]
         itemCounts["B"] -= offerCount
-    return totalPrice
+    return itemCounts, totalPrice
 
 
 def checkout(skus):
@@ -80,13 +80,9 @@ def checkout(skus):
     # Total the number of items from the itemCount
     totalPrice = 0
 
-    print(itemCount)
-    totalPrice += apply_E_deal(itemCount, totalPrice)
-    print(itemCount)
-    totalPrice += apply_A_deals(itemCount, totalPrice)
-    print(itemCount)
-    totalPrice += apply_B_deal(itemCount, totalPrice)
-    print(itemCount)
+    itemCount, totalPrice = apply_E_deal(itemCount, totalPrice)
+    itemCount, totalPrice = apply_A_deals(itemCount, totalPrice)
+    itemCount, totalPrice = apply_B_deal(itemCount, totalPrice)
 
     # Iterate over any remaining items in itemCount
     try:
@@ -96,6 +92,7 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
 
