@@ -79,18 +79,20 @@ def checkout(skus):
 
     # Total the number of items from the itemCount
     totalPrice = 0
+
+    itemCount, totalPrice += apply_E_deal(itemCount, totalPrice)
+    itemCount, totalPrice += apply_A_deals(itemCount, totalPrice)
+    itemCount, totalPrice += apply_B_deal(itemCount, totalPrice)
+
+    # Iterate over any remaining items in itemCount
     try:
         for item, count in itemCount.items():
-            itemPrices = ITEM_VALUES[item]
-            if "offerPrice" in itemPrices.keys():
-                numberOfOffers = count // itemPrices["requiredForOffer"]
-                totalPrice += numberOfOffers * itemPrices["offerPrice"]
-                count = count % itemPrices["requiredForOffer"]
-            totalPrice += count * itemPrices["stdPrice"]
+            totalPrice += STD_VALUES(item) * count
     except KeyError:
         return -1
     else:
         return totalPrice
+
 
 
 
