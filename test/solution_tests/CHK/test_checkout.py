@@ -97,8 +97,25 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("FFFF"), 30)
 
     def test_item_6H(self):
-        self.assertEqual(checkout("H"*6), 30)
+        self.assertEqual(checkout("H"*6), 55)
 
+    def test_item_11H(self):
+        self.assertEqual(checkout("H"*11), 90)
+
+    def test_item_2K(self):
+        self.assertEqual(checkout("K"*3), 230)
+
+    def test_item_4N_with_2M(self):
+        self.assertEqual(checkout("NNNNMM"), 175)
+
+    def test_item_4N_without_M(self):
+        self.assertEqual(checkout("N"*4), 160)
+
+    def test_item_6P(self):
+        self.assertEqual(checkout("P"*6), 250)
+
+    def test_item_4Q(self):
+        self.assertEqual(checkout("Q"*4), 250)
 
 
     def test_mixed_items(self):
@@ -113,5 +130,6 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 
 
