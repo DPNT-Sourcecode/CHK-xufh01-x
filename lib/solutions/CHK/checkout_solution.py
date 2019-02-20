@@ -14,7 +14,7 @@ def apply_A_deals(itemCounts, totalPrice=0):
         if itemCounts["A"] >= 3:
             # Apply 3A deal
             totalOfferPrice = itemCounts["A"] // 3 * OFFER_PRICE_FOR_3A
-            totalOfferPrice += totalOfferPrice
+            totalPrice += totalOfferPrice
             itemCounts["A"] = itemCounts["A"] % 3
     return totalPrice
 
@@ -96,6 +96,7 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
 
