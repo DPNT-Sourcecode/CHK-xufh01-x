@@ -23,10 +23,30 @@ def checkout(skus):
 
     STANDARD_ITEM_VALUES = {
         "A" : {
-            "stdVal" : 50,
-            "dealVal" : 130,
-            "requiredForDeal" : 3,
-            
+            "stdPrice" : 50,
+            "offerPrice" : 130,
+            "requiredForOffer" : 3,
+        },
+        "B" : {
+            "stdPrice" : 30,
+            "offerPrice" : 130,
+            "requiredForOffer" : 3,
+        },
+        "C" : {
+            "stdPrice" : 20,
+        },
+        "D" : {
+            "stdPrice" : 15,
         }
     }
+
+    itemCount = {}
+
+
+    for item in skus:
+        if item in itemCount:
+            itemCount[item] += 1
+        else:
+            itemCount[item] = 1
+
 
