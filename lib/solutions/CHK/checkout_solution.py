@@ -5,7 +5,18 @@ def apply_A_deals(itemCounts, totalPrice=0):
     """ For offers buy 5A for 200, 3A for 130"""
     OFFER_PRICE_FOR_5A = 200
     OFFER_PRICE_FOR_3A = 130
-    if "A" in itemCounts
+    if "A" in itemCounts.keys():
+        # Apply 5A deal first
+        if itemCounts["A"] >= 5:
+            totalOfferPrice = itemCounts["A"] // 5 * OFFER_PRICE_FOR_5A
+            totalPrice += totalOfferPrice
+            itemCounts["A"] = itemCounts["A"] % 5
+        if itemCounts["A"] >= 3:
+            # Apply 3A deal
+            totalOfferPrice = itemCounts["A"] // 3 * OFFER_PRICE_FOR_3A
+            totalOfferPrice += totalOfferPrice
+            itemCounts["A"] = itemCounts["A"] % 3
+    return itemCounts, totalPrice
 
 
 def checkout(skus):
@@ -75,6 +86,7 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
 
