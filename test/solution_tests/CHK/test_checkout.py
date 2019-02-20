@@ -103,7 +103,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("H"*11), 90)
 
     def test_item_2K(self):
-        self.assertEqual(checkout("K"*3), 220)
+        self.assertEqual(checkout("K"*3), 190)
 
     def test_item_4N_with_2M(self):
         self.assertEqual(checkout("NNNNMM"), 175)
@@ -157,6 +157,7 @@ class TestSTXYZ(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 
 
 
