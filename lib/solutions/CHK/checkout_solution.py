@@ -52,4 +52,7 @@ def checkout(skus):
     # Total the number of items from the itemCount
     totalPrice = 0
     try:
-        for item, count in itemCount.items()
+        for item, count in itemCount.items():
+            itemPrices = ITEM_VALUES[item]
+            if "offerPrice" in itemPrices.keys():
+                numberOfOffers = 
