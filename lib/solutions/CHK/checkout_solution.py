@@ -11,12 +11,14 @@ def deal_for_better_price(itemCount, totalPrice, numberRequired, dealPrice):
         totalPrice += dealCount * dealPrice
     return itemCount, totalPrice
 
+
 def deal_for_different_item_free(itemCounts, item, numberRequired, freeItem):
     """ For offers such as buy 3A get one B free """
     if item in itemCounts.keys() and freeItem in itemCounts.keys():
         offerCount = itemCounts[item] // numberRequired
         itemCounts[freeItem] -= offerCount
     return itemCounts
+
 
 def checkout(skus):
     """
@@ -90,13 +92,13 @@ def checkout(skus):
         "Z": 50
     }
 
-    DEALS_FOR_DIFFERENT_ITEM_FREE = {
+    DEALS_FOR_DIFFERENT_ITEM_FREE = [
         ( "E", 2, "B" ),
         ( "N", 3, "M" ),
         ( "R", 3, "Q" )
-    }
+    ]
 
-    DEALS_FOR_BETTER_PRICE = {
+    DEALS_FOR_BETTER_PRICE = [
         ( "A", 5, 200 ),
         ( "A", 3, 130 ),
         ( "B", 2, 45 ),
@@ -109,7 +111,7 @@ def checkout(skus):
         ( "U", 4, 120 ),
         ( "V", 3, 130 ),
         ( "V", 2, 90 ),
-    }
+    ]
 
     itemCounts = {}
 
@@ -153,6 +155,7 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
 
