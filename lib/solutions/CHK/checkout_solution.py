@@ -40,9 +40,9 @@ def apply_E_deal(itemCounts, totalPrice=0):
 
 
 def apply_F_deal(itemCounts, totalPrice=0):
-    """ For offer buy 2F get one F free (i.e. for every 3F you buy, one of them is free)"""
+    """ For offer buy 2F get one F free (i.e. for every 3F you buy, one of those 3 is free)"""
     if "F" in itemCounts.keys():
-        itemCounts["F"] -= itemCounts["F"] // 2
+        itemCounts["F"] -= itemCounts["F"] // 3
     return itemCounts, totalPrice
 
 
@@ -103,6 +103,7 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
 
