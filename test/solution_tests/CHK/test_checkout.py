@@ -44,6 +44,7 @@ class TestCheckout(unittest.TestCase):
      - All the offers are well balanced so that they can be safely combined.
      - For any illegal input return -1
     """
+    def 
 
     def test_item_3A(self):
         self.assertEqual(checkout("AAAA"), 180)
@@ -84,5 +85,3 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-

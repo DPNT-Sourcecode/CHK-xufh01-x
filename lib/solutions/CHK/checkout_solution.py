@@ -104,6 +104,3 @@ def checkout(skus):
     else:
         return totalPrice
 
-
-
-
