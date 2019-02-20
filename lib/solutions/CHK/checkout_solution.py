@@ -29,8 +29,8 @@ def checkout(skus):
         },
         "B" : {
             "stdPrice" : 30,
-            "offerPrice" : 130,
-            "requiredForOffer" : 3,
+            "offerPrice" : 45,
+            "requiredForOffer" : 2,
         },
         "C" : {
             "stdPrice" : 20,
@@ -62,4 +62,5 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
