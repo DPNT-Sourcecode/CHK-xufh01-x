@@ -1,6 +1,18 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
+def deal_for_better_price(itemCount, totalPrice, numberRequired, dealPrice):
+    """ For offers such as buy 3A for 130
+        This also works for offers like buy 3A get one A free, as this is the same as saying buy 4A for the price of 3
+    """
+    if itemCount >= numberRequired:
+        dealCount = itemCount // numberRequired
+        itemCount = itemCount % numberRequired
+        totalPrice += dealCount * dealPrice
+    return itemCount, totalPrice
+
+def deal_for_different_item_free
+
 def apply_A_deals(itemCounts, totalPrice=0):
     """ For offers buy 5A for 200, 3A for 130"""
     OFFER_PRICE_FOR_5A = 200
@@ -130,12 +142,15 @@ def checkout(skus):
     # Total the number of items from the itemCount
     totalPrice = 0
 
-    itemCount, totalPrice = apply_E_deal(itemCount, totalPrice)
-    itemCount, totalPrice = apply_A_deals(itemCount, totalPrice)
-    itemCount, totalPrice = apply_B_deal(itemCount, totalPrice)
-    itemCount, totalPrice = apply_F_deal(itemCount, totalPrice)
-
-    DEALS_FOR_BETTER_PRICE = {}
+    # Iterate over deals for free items:
+    for deal in DEALS_FOR_DIFFERENT_ITEM_FREE:
+        requiredItem = deal[0]
+        numberRequired = deal[1]
+        freeItem = deal[2]
+        itemCounts = deal_for_different_item_free(itemCounts,
+                                                  requiredItem,
+                                                  numberRequired,
+                                                  freeItem)
 
     # Iterate over deals for better price:
     for deal in DEALS_FOR_BETTER_PRICE:
@@ -143,7 +158,10 @@ def checkout(skus):
         if item in itemCounts.keys():
             numberRequired = deal[1]
             dealPrice = deal[2]
-            itemCount
+            itemCounts[item], totalPrice = deal_for_better_price(itemCounts[item],
+                                                                 totalPrice,
+                                                                 numberRequired,
+                                                                 dealPrice)
 
 
     # Iterate over any remaining items in itemCount
@@ -154,5 +172,6 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
