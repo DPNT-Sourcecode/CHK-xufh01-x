@@ -27,7 +27,7 @@ class TestCheckout(unittest.TestCase):
     def test_item_3A(self):
         self.assertEqual(checkout("AAAA"), 180)
 
-    def test_item_6A(self):
+    def test_item_5A(self):
         self.assertEqual(checkout("AAAAA"), 200)
 
     def test_item_B(self):
@@ -60,3 +60,4 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

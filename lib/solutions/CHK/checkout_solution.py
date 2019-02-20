@@ -28,16 +28,14 @@ def apply_B_deal(itemCounts, totalPrice=0):
         itemCounts["B"] = itemCounts["B"] % REQUIRED_FOR_OFFER
     return itemCounts, totalPrice
 
+
 def apply_E_deal(itemCounts, totalPrice=0):
     """ For offer buy 2E get one B free"""
-    OFFER_PRICE = 45
-    REQUIRED_FOR_OFFER = 2
-    if "B" in itemCounts.keys() and itemCounts["B"] >= REQUIRED_FOR_OFFER:
-        totalOfferPrice = itemCounts["B"] // REQUIRED_FOR_OFFER * OFFER_PRICE
-        totalPrice += totalOfferPrice
-        itemCounts["B"] = itemCounts["B"] % REQUIRED_FOR_OFFER
+    if "E" in itemCounts.keys()\
+            and "B" in itemCounts.keys():
+        offerCount = itemCounts["E"]
+        itemCounts["B"] -= offerCount
     return itemCounts, totalPrice
-
 
 
 def checkout(skus):
@@ -62,26 +60,12 @@ def checkout(skus):
      - For any illegal input return -1
     """
 
-    ITEM_VALUES = {
-        "A" : {
-            "stdPrice" : 50,
-            "offerPrice" : 130,
-            "requiredForOffer" : 3,
-        },
-        "B" : {
-            "stdPrice" : 30,
-            "offerPrice" : 45,
-            "requiredForOffer" : 2,
-        },
-        "C" : {
-            "stdPrice" : 20,
-        },
-        "D" : {
-            "stdPrice" : 15,
-        },
-        "E" : {
-            "stdPrice" : 40,
-        }
+    STD_VALUES = {
+        "A": 50,
+        "B": 30,
+        "C": 20,
+        "D": 15,
+        "E": 40
     }
 
     itemCount = {}
@@ -107,5 +91,6 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
