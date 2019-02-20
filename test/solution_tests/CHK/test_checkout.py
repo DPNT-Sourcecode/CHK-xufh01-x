@@ -45,6 +45,39 @@ class TestCheckout(unittest.TestCase):
      - All the offers are well balanced so that they can be safely combined.
      - For any illegal input return -1
     """
+    def test_standard_prices(self):
+        """Test all of the standard item prices"""
+        STANDARD_PRICES = {
+            "A": 50,
+            "B": 30,
+            "C": 20,
+            "D": 15,
+            "E": 40,
+            "F": 10,
+            "G": 20,
+            "H": 10,
+            "I": 35,
+            "J": 60,
+            "K": 80,
+            "L": 90,
+            "M": 15,
+            "N": 40,
+            "O": 10,
+            "P": 50,
+            "Q": 30,
+            "R": 50,
+            "S": 30,
+            "T": 20,
+            "U": 40,
+            "V": 50,
+            "W": 20,
+            "X": 90,
+            "Y": 10,
+            "Z": 50
+        }
+        for item, price in STANDARD_PRICES.items():
+            self.assertEquals(checkout(item), price)
+
     def test_item_4A(self):
         self.assertEqual(checkout("AAAA"), 180)
 
@@ -107,45 +140,8 @@ class TestCheckout(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    testCheckout = TestCheckout()
     unittest.main()
 
-class standardPrices(TestCheckout):
-    def __init__(self):
-        standardPrices = {
-            "A": 50,
-            "B": 30,
-            "C": 20,
-            "D": 15,
-            "E": 40,
-            "F": 10,
-            "G": 20,
-            "H": 10,
-            "I": 35,
-            "J": 60,
-            "K": 80,
-            "L": 90,
-            "M": 15,
-            "N": 40,
-            "O": 10,
-            "P": 50,
-            "Q": 30,
-            "R": 50,
-            "S": 30,
-            "T": 20,
-            "U": 40,
-            "V": 50,
-            "W": 20,
-            "X": 90,
-            "Y": 10,
-            "Z": 50
-        }
-        for item, price in standardPrices.items():
-            self.assertEquals(checkout(item), price)
-
-
-if __name__ == "__main__":
-    unittest.main()
 
 
 
