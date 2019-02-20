@@ -11,52 +11,12 @@ def deal_for_better_price(itemCount, totalPrice, numberRequired, dealPrice):
         totalPrice += dealCount * dealPrice
     return itemCount, totalPrice
 
-def deal_for_different_item_free
-
-def apply_A_deals(itemCounts, totalPrice=0):
-    """ For offers buy 5A for 200, 3A for 130"""
-    OFFER_PRICE_FOR_5A = 200
-    OFFER_PRICE_FOR_3A = 130
-    if "A" in itemCounts.keys():
-        # Apply 5A deal first
-        if itemCounts["A"] >= 5:
-            totalOfferPrice = itemCounts["A"] // 5 * OFFER_PRICE_FOR_5A
-            totalPrice += totalOfferPrice
-            itemCounts["A"] = itemCounts["A"] % 5
-        if itemCounts["A"] >= 3:
-            # Apply 3A deal
-            totalOfferPrice = itemCounts["A"] // 3 * OFFER_PRICE_FOR_3A
-            totalPrice += totalOfferPrice
-            itemCounts["A"] = itemCounts["A"] % 3
-    return itemCounts, totalPrice
-
-
-def apply_B_deal(itemCounts, totalPrice=0):
-    """ For offer buy 2B for 45"""
-    OFFER_PRICE = 45
-    REQUIRED_FOR_OFFER = 2
-    if "B" in itemCounts.keys() and itemCounts["B"] >= REQUIRED_FOR_OFFER:
-        totalOfferPrice = itemCounts["B"] // REQUIRED_FOR_OFFER * OFFER_PRICE
-        totalPrice += totalOfferPrice
-        itemCounts["B"] = itemCounts["B"] % REQUIRED_FOR_OFFER
-    return itemCounts, totalPrice
-
-
-def apply_E_deal(itemCounts, totalPrice=0):
-    """ For offer buy 2E get one B free"""
-    if "E" in itemCounts.keys()\
-            and "B" in itemCounts.keys():
-        offerCount = itemCounts["E"] // 2
-        itemCounts["B"] -= offerCount
-    return itemCounts, totalPrice
-
-
-def apply_F_deal(itemCounts, totalPrice=0):
-    """ For offer buy 2F get one F free (i.e. for every 3F you buy, one of those 3 is free)"""
-    if "F" in itemCounts.keys():
-        itemCounts["F"] -= itemCounts["F"] // 3
-    return itemCounts, totalPrice
-
+def deal_for_different_item_free(itemCounts, item, numberRequired, freeItem):
+    """ For offers such as buy 3A get one B free """
+    if item in itemCounts.keys() and freeItem in itemCounts.keys():
+        offerCount = itemCounts[item] // numberRequired
+        itemCounts[freeItem] -= offerCount
+    return itemCounts
 
 def checkout(skus):
     """
@@ -130,6 +90,11 @@ def checkout(skus):
         "Z": 50
     }
 
+    DEALS_FOR_DIFFERENT_ITEM_FREE = {
+        { "E", 2, "B" },
+        {}
+    }
+
     itemCount = {}
 
     # Count the number of occurences all items in skus
@@ -172,6 +137,7 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
 
