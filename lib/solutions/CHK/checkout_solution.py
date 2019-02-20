@@ -22,7 +22,10 @@ def apply_B_deal(itemCounts, totalPrice=0):
     """ For offer buy 2B for 45"""
     OFFER_PRICE = 45
     REQUIRED_FOR_OFFER = 2
-    if "B" in itemCounts.keys() and itemCounts["B"] >= 
+    if "B" in itemCounts.keys() and itemCounts["B"] >= REQUIRED_FOR_OFFER:
+        totalOfferPrice = itemCounts["B"] // REQUIRED_FOR_OFFER * OFFER_PRICE
+        totalPrice += totalOfferPrice
+        itemCounts["B"] = itemCounts["B"] % REQUIRED_FOR_OFFER
 
 def checkout(skus):
     """
@@ -91,5 +94,4 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
-
 
