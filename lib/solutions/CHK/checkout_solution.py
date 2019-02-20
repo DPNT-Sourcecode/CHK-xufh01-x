@@ -29,7 +29,15 @@ def apply_STXYZ_deal(itemCounts, totalPrice):
             totalCount += itemCounts[item]
     if totalCount >= 3:
         totalPrice += totalCount // 3 * 45
-        
+        itemsToRemove = totalCount - totalCount % 3
+        for item in VALID_ITEMS:
+            if itemsToRemove == 0:
+                break
+            elif item in itemCounts.keys():
+                amountRemoving = min(itemsToRemove, itemCounts[item])
+                itemCounts[item] -= amountRemoving
+                itemsToRemove -= amountRemoving
+    return itemCounts, totalPrice
 
 
 def checkout(skus):
@@ -167,6 +175,7 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
 
