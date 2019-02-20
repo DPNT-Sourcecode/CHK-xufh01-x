@@ -20,6 +20,18 @@ def deal_for_different_item_free(itemCounts, item, numberRequired, freeItem):
     return itemCounts
 
 
+def apply_STXYZ_deal(itemCounts, totalPrice):
+    """ For offers buy any of (S, T, X, Y, Z) for 45"""
+    VALID_ITEMS = ("Z", "S", "T", "Y", "X")
+    totalCount = 0
+    for item in VALID_ITEMS:
+        if item in itemCounts.keys():
+            totalCount += itemCounts[item]
+    if totalCount >= 3:
+        totalPrice += totalCount // 3 * 45
+        
+
+
 def checkout(skus):
     """
     This function accepts a string containing items and returns the total value as iteger.
@@ -82,14 +94,14 @@ def checkout(skus):
         "P": 50,
         "Q": 30,
         "R": 50,
-        "S": 30,
+        "S": 20,
         "T": 20,
         "U": 40,
         "V": 50,
         "W": 20,
-        "X": 90,
-        "Y": 10,
-        "Z": 50
+        "X": 17,
+        "Y": 20,
+        "Z": 21
     }
 
     DEALS_FOR_DIFFERENT_ITEM_FREE = [
@@ -155,5 +167,6 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
