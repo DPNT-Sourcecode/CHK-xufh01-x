@@ -39,6 +39,13 @@ def apply_E_deal(itemCounts, totalPrice=0):
     return itemCounts, totalPrice
 
 
+def apply_F_deal(itemCounts, totalPrice=0):
+    """ For offer buy 2F get one F free (i.e. for every 3F you buy, one of them is free)"""
+    if "F" in itemCounts.keys():
+        itemCounts["F"] -= itemCounts["F"] // 2
+    return itemCounts, totalPrice
+
+
 def checkout(skus):
     """
     This function accepts a string containing items and returns the total value as iteger.
@@ -86,6 +93,7 @@ def checkout(skus):
     itemCount, totalPrice = apply_E_deal(itemCount, totalPrice)
     itemCount, totalPrice = apply_A_deals(itemCount, totalPrice)
     itemCount, totalPrice = apply_B_deal(itemCount, totalPrice)
+    itemCount, totalPrice = apply_F_deal(itemCount, totalPrice)
 
     # Iterate over any remaining items in itemCount
     try:
@@ -95,5 +103,6 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
