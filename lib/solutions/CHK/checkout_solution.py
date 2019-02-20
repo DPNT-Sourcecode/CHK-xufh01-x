@@ -89,7 +89,7 @@ def checkout(skus):
      - For any illegal input return -1
     """
 
-    STANDARD_PRICES = {
+    STD_PRICES = {
         "A": 50,
         "B": 30,
         "C": 20,
@@ -138,10 +138,11 @@ def checkout(skus):
     # Iterate over any remaining items in itemCount
     try:
         for item, count in itemCount.items():
-            totalPrice += STD_VALUES[item] * count
+            totalPrice += STD_PRICES[item] * count
     except KeyError:
         return -1
     else:
         return totalPrice
+
 
 
