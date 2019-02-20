@@ -1,7 +1,13 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+def apply_A_deals(itemCounts, totalPrice=0):
+    """ For offers buy 5A for 200, 3A for 130"""
+    OFFER_PRICE_FOR_5A = 200
+    OFFER_PRICE_FOR_3A = 130
+    if "A" in itemCounts
+
+
 def checkout(skus):
     """
     This function accepts a string containing items and returns the total value as iteger.
@@ -69,5 +75,6 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
