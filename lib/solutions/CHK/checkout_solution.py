@@ -91,35 +91,34 @@ def checkout(skus):
     }
 
     DEALS_FOR_DIFFERENT_ITEM_FREE = {
-        { "E", 2, "B" },
-        { "N", 3, "M" },
-        { "R", 3, "Q" }
+        ( "E", 2, "B" ),
+        ( "N", 3, "M" ),
+        ( "R", 3, "Q" )
     }
 
     DEALS_FOR_BETTER_PRICE = {
-        { "A", 5, 200 },
-        { "A", 3, 130 },
-        { "B", 2, 45 },
-        { "F", 3, 20 },
-        { "H", 10, 80 },
-        { "H", 5, 45 },
-        { "K", 2, 150 },
-        { "P", 5, 200 },
-        { "Q", 3, 80 },
-        { "U", 4, 120 },
-        { "V", 3, 130 },
-        { "V", 2, 90 },
-
+        ( "A", 5, 200 ),
+        ( "A", 3, 130 ),
+        ( "B", 2, 45 ),
+        ( "F", 3, 20 ),
+        ( "H", 10, 80 ),
+        ( "H", 5, 45 ),
+        ( "K", 2, 150 ),
+        ( "P", 5, 200 ),
+        ( "Q", 3, 80 ),
+        ( "U", 4, 120 ),
+        ( "V", 3, 130 ),
+        ( "V", 2, 90 ),
     }
 
-    itemCount = {}
+    itemCounts = {}
 
     # Count the number of occurences all items in skus
     for item in skus:
-        if item in itemCount:
-            itemCount[item] += 1
+        if item in itemCounts:
+            itemCounts[item] += 1
         else:
-            itemCount[item] = 1
+            itemCounts[item] = 1
 
     # Total the number of items from the itemCount
     totalPrice = 0
@@ -148,12 +147,13 @@ def checkout(skus):
 
     # Iterate over any remaining items in itemCount
     try:
-        for item, count in itemCount.items():
+        for item, count in itemCounts.items():
             totalPrice += STD_PRICES[item] * count
     except KeyError:
         return -1
     else:
         return totalPrice
+
 
 
 
