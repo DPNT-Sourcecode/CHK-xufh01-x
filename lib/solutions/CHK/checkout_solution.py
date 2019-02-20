@@ -55,4 +55,4 @@ def checkout(skus):
         for item, count in itemCount.items():
             itemPrices = ITEM_VALUES[item]
             if "offerPrice" in itemPrices.keys():
-                numberOfOffers = 
+                numberOfOffers = count // itemPrices
