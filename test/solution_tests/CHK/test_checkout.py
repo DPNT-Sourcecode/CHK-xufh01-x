@@ -115,7 +115,16 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("P"*6), 250)
 
     def test_item_4Q(self):
-        self.assertEqual(checkout("Q"*4), 250)
+        self.assertEqual(checkout("Q"*4), 110)
+
+    def test_item_4R_with_3Q(self):
+        self.assertEqual(checkout("RRRRQQQ"), 360)
+
+    def test_item_4R_without_Q(self):
+        self.assertEqual(checkout("R"*4), 200)
+
+    def test_item_5U(self):
+        self.assertEqual(checkout("U"*5), 110)
 
 
     def test_mixed_items(self):
@@ -130,6 +139,7 @@ class TestCheckout(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 
 
 
