@@ -43,19 +43,21 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("E"), 40)
 
     def test_item_E_deal_with_B(self):
-        self.assertEqual(checkout("EEEBB"), 40)
+        self.assertEqual(checkout("EEEBB"), 150)
 
-
+    def test_item_E_deal_without_B(self):
+        self.assertEqual(checkout("EE"), 80)
 
     def test_mixed_items(self):
-        self.assertEqual(checkout("ABCD"), 115)
-
-    def test_illegal_input(self):
-        self.assertEqual(checkout("ABCDZ"), -1)
+        self.assertEqual(checkout("ABCDE"), 115)
 
     def test_no_items(self):
         self.assertEqual(checkout(""), 0)
 
+    def test_illegal_item(self):
+        self.assertEqual(checkout("ABCDEZ"), -1)
+
 
 if __name__ == "__main__":
     unittest.main()
+

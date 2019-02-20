@@ -7,18 +7,21 @@ def checkout(skus):
     This function accepts a string containing items and returns the total value as iteger.
     The value of each item is listed below:
 
-        +------+-------+----------------+
-        | Item | Price | Special
-        offers |
-        +------+-------+----------------+
-        | A | 50 | 3A for 130 |
-        | B | 30 | 2B for 45 |
-        | C | 20 | |
-        | D | 15 | |
-        +------+-------+----------------+
+    +------+-------+------------------------+
+    | Item | Price | Special offers         |
+    +------+-------+------------------------+
+    | A    | 50    | 3A for 130, 5A for 200 |
+    | B    | 30    | 2B for 45              |
+    | C    | 20    |                        |
+    | D    | 15    |                        |
+    | E    | 40    | 2E get one B free      |
+    +------+-------+------------------------+
 
-        Notes:
-        - For any illegal input return -1
+
+    Notes:
+     - The policy of the supermarket is to always favor the customer when applying special offers.
+     - All the offers are well balanced so that they can be safely combined.
+     - For any illegal input return -1
     """
 
     ITEM_VALUES = {
@@ -37,6 +40,9 @@ def checkout(skus):
         },
         "D" : {
             "stdPrice" : 15,
+        ,
+        "E" : {
+            "stdPrice" : 40,
         }
     }
 
@@ -63,4 +69,5 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
