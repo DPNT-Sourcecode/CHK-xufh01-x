@@ -80,10 +80,15 @@ def checkout(skus):
     # Total the number of items from the itemCount
     totalPrice = 0
 
-    deal = apply_E_deal(itemCount, totalPrice)
-    # (itemCount, totalPrice += apply_E_deal(itemCount, totalPrice)
-    itemCount, totalPrice += apply_A_deals(itemCount, totalPrice)
-    itemCount, totalPrice += apply_B_deal(itemCount, totalPrice)
+    newCount, newPrice = apply_E_deal(itemCount, totalPrice)
+    itemCount += newCount
+    totalPrice += newPrice
+    newCount, newPrice =  apply_A_deals(itemCount, totalPrice)
+    itemCount += newCount
+    totalPrice += newPrice
+    newCount, newPrice =  apply_B_deal(itemCount, totalPrice)
+    itemCount += newCount
+    totalPrice += newPrice
 
     # Iterate over any remaining items in itemCount
     try:
@@ -93,5 +98,6 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
