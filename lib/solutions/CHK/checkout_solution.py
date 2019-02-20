@@ -49,7 +49,6 @@ def checkout(skus):
         else:
             itemCount[item] = 1
 
-    print itemCount
     # Total the number of items from the itemCount
     totalPrice = 0
     try:
@@ -64,6 +63,7 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
 
