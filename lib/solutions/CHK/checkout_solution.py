@@ -18,6 +18,7 @@ def apply_A_deals(itemCounts, totalPrice=0):
             itemCounts["A"] = itemCounts["A"] % 3
     return itemCounts, totalPrice
 
+
 def apply_B_deal(itemCounts, totalPrice=0):
     """ For offer buy 2B for 45"""
     OFFER_PRICE = 45
@@ -33,7 +34,7 @@ def apply_E_deal(itemCounts, totalPrice=0):
     """ For offer buy 2E get one B free"""
     if "E" in itemCounts.keys()\
             and "B" in itemCounts.keys():
-        offerCount = itemCounts["E"]
+        offerCount = itemCounts["E"] // 2
         itemCounts["B"] -= offerCount
     return itemCounts, totalPrice
 
@@ -92,9 +93,4 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
-
-
-
-
-
 

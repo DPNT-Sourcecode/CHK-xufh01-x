@@ -49,7 +49,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("EE"), 80)
 
     def test_mixed_items(self):
-        self.assertEqual(checkout("ABCDE"), 115)
+        self.assertEqual(checkout("ABCDE"), 155)
 
     def test_no_items(self):
         self.assertEqual(checkout(""), 0)
