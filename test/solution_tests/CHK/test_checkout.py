@@ -133,7 +133,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("VVVV"), 180)
 
     def test_all_items(self):
-        self.assertEqual(checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 965)
+        self.assertEqual(checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 837)
 
     def test_no_items(self):
         self.assertEqual(checkout(""), 0)
@@ -157,6 +157,7 @@ class TestSTXYZ(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 
 
 

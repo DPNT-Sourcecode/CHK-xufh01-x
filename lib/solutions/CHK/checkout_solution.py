@@ -166,6 +166,7 @@ def checkout(skus):
                                                                  numberRequired,
                                                                  dealPrice)
 
+    itemCounts, totalPrice = apply_STXYZ_deal(itemCounts, totalPrice)
 
     # Iterate over any remaining items in itemCount
     try:
@@ -175,6 +176,7 @@ def checkout(skus):
         return -1
     else:
         return totalPrice
+
 
 
 
